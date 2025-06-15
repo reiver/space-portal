@@ -10,4 +10,14 @@ func main() {
 
 	log.Inform("space-portal ⚡")
 	blur()
+
+	const tcpaddr string = ":80"
+	httpdaemon := httpserve(tcpaddr)
+
+	var err error
+	select {
+	case err = <-httpdaemon:
+		log.Errorf("http-daemon lost: %s", err)
+	}
+	panic(err)
 }
