@@ -9,4 +9,5 @@ func main() {
 	defer log.End()
 
 	log.Inform("space-portal ⚡")
+	blur()
 }
