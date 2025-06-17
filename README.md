@@ -13,7 +13,7 @@ traffic from the Internet is received by a **space-portal**, and then the **spac
 Typically, **space-portal** would be running on a separate computer from the **space-base**s.
 And, although you can run **space-portal** on a computer with a single Ethernet-port, you should be able to get better performance if the computer running **space-portal** has 2 Ethernet-ports
 —
-where one Ethernet-port (directly or indirectly) connects to the Internet, and the other Ethernet-port connects to the network that the **space-base**s are (also) connected to.
+where one Ethernet-port (directly or indirectly) connects to the Internet, and the other Ethernet-port connects to the network that the **space-base**s are (also) connected to (ideally connected via an Ethernet-switch rather than an Ethernet-hub).
 
 ## See Also
 
