@@ -8,7 +8,7 @@ import (
 
 	"github.com/caddyserver/certmagic"
 	"github.com/reiver/go-erorr"
-	"github.com/reiver/space-portal/lib/handler"
+	"github.com/reiver/go-http2https"
 	logsrv "github.com/reiver/space-portal/srv/log"
 )
 
@@ -59,7 +59,7 @@ func _httpserve(ch chan error, tcpaddr string) {
 	}
 	if len(cfg.Issuers) > 0 {
 		if am, ok := cfg.Issuers[0].(*certmagic.ACMEIssuer); ok {
-			httpServer.Handler = am.HTTPChallengeHandler(http.HandlerFunc(handler.HTTPRedirectHandler))
+			httpServer.Handler = am.HTTPChallengeHandler(http2https.Handler)
 		}
 	}
 
