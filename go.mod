@@ -8,6 +8,7 @@ require (
 	github.com/reiver/go-http2https v0.0.0-20250615150048-7ae3b9eeef5e
 	github.com/reiver/go-http500 v0.0.0-20250531141625-af98f83e19aa
 	github.com/reiver/go-log v1.1.1-0.20250112073952-9561cd42d7ec
+	github.com/reiver/go-reg v0.0.0-20250205002346-93a5107a6a54
 )
 
 require (
