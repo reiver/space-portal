@@ -24,7 +24,7 @@ func httpsserve(tcpaddr string) <-chan error {
 	return ch
 }
 
-func _httpsserve(ch chan error, tcpaddr string) {
+func _httpsserve(ch chan<- error, tcpaddr string) {
 	log := logsrv.Prefix("_httpsserve").Begin()
 	defer log.End()
 
