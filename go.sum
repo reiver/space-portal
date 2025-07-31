@@ -24,6 +24,8 @@ github.com/reiver/go-http500 v0.0.0-20250531141625-af98f83e19aa h1:Yp7SqcNvVj/EE
 github.com/reiver/go-http500 v0.0.0-20250531141625-af98f83e19aa/go.mod h1:sfnQu2KzK8rGH8aBqBP/gW/guYrHUzol86ZsHHFwDeo=
 github.com/reiver/go-log v1.1.1-0.20250112073952-9561cd42d7ec h1:hkYO+BgWByMhSsuEGpbnkNdGYiMrKiqbGb/+4Zbwa5s=
 github.com/reiver/go-log v1.1.1-0.20250112073952-9561cd42d7ec/go.mod h1:0sqMSve6TILkxj7UEER97cmnhJmE/XkTIPBxtXbSEcM=
+github.com/reiver/go-reg v0.0.0-20250205002346-93a5107a6a54 h1:3RXToT4ME+wwxa7FkZKFsLOTmxWj/5QWXemN1cFk56E=
+github.com/reiver/go-reg v0.0.0-20250205002346-93a5107a6a54/go.mod h1:P4MhBoVQLOdhisU6M3f2DvbbNBueHw3Y+n4V/Q7xX9Q=
 github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKsk=
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/zeebo/assert v1.1.0 h1:hU1L1vLTHsnO8x8c9KAR5GmM5QscxHg5RNU5z5qbUWY=

@@ -25,7 +25,7 @@ func httpserve(tcpaddr string) <-chan error {
 	return ch
 }
 
-func _httpserve(ch chan error, tcpaddr string) {
+func _httpserve(ch chan<- error, tcpaddr string) {
 	log := logsrv.Prefix("_httpserve").Begin()
 	defer log.End()
 

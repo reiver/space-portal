@@ -24,7 +24,7 @@ func httpsserve(tcpaddr string) <-chan error {
 	return ch
 }
 
-func _httpsserve(ch chan error, tcpaddr string) {
+func _httpsserve(ch chan<- error, tcpaddr string) {
 	log := logsrv.Prefix("_httpsserve").Begin()
 	defer log.End()
 
@@ -50,6 +50,24 @@ func _httpsserve(ch chan error, tcpaddr string) {
 		}
 	}
 
+	var handler http.Handler
+	{
+		handler = http.HandlerFunc(
+			func(w http.ResponseWriter, r *http.Request) { // TODO: remove this, as this will never be called due to `middleware.Proxy`
+				w.Write([]byte("Hello, World!"))
+			},
+		)
+
+		handler = middlewares(handler)
+
+		if nil == handler {
+			err := erorr.Errorf("problem with serving HTTPS on TCP address %q — could not set-up http-handler and http-middleware", tcpaddr)
+			log.Errorf("ERROR: %s", err)
+			ch <- err
+			return
+		}
+	}
+
 	// HTTPS server for TLS termination and proxying
 	// TODO: tweak timeouts if needed
 	var httpsServer = http.Server{
@@ -57,9 +75,7 @@ func _httpsserve(ch chan error, tcpaddr string) {
 		ReadTimeout:       30 * time.Second,
 		WriteTimeout:      2 * time.Minute,
 		IdleTimeout:       5 * time.Minute,
-		Handler: middlewares(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { // TODO: remove this, as this will never be called due to `middleware.Proxy`
-			w.Write([]byte("Hello, World!"))
-		})),
+		Handler: handler,
 	}
 
 	go func() {
