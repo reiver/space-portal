@@ -33,6 +33,7 @@ func _httpsserve(ch chan<- error, tcpaddr string) {
 		var err error
 
 		tlsConfig := certmagicsrv.Config.TLSConfig()
+		tlsConfig.NextProtos = append([]string{"h2", "http/1.1"}, tlsConfig.NextProtos...)
 		listener, err = tls.Listen("tcp", tcpaddr, tlsConfig)
 		if err != nil {
 			listener.Close()
