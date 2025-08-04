@@ -8,8 +8,8 @@ import (
 
 	"github.com/reiver/go-erorr"
 
-	"github.com/reiver/space-portal/srv/certmagic"
-	"github.com/reiver/space-portal/srv/log"
+	certmagicsrv "github.com/reiver/space-portal/srv/certmagic"
+	logsrv "github.com/reiver/space-portal/srv/log"
 )
 
 func httpsserve(tcpaddr string) <-chan error {
@@ -19,7 +19,7 @@ func httpsserve(tcpaddr string) <-chan error {
 	log.Informf("serving HTTPS on TCP address: %q", tcpaddr)
 
 	ch := make(chan error)
-	go _httpserve(ch, tcpaddr)
+	go _httpsserve(ch, tcpaddr)
 	log.Inform("https-daemon spawed 😈")
 	return ch
 }
@@ -75,7 +75,7 @@ func _httpsserve(ch chan<- error, tcpaddr string) {
 		ReadTimeout:       30 * time.Second,
 		WriteTimeout:      2 * time.Minute,
 		IdleTimeout:       5 * time.Minute,
-		Handler: handler,
+		Handler:           handler,
 	}
 
 	go func() {
