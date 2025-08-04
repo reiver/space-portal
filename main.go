@@ -2,6 +2,7 @@ package main
 
 import (
 	logsrv "github.com/reiver/space-portal/srv/log"
+	_ "github.com/reiver/space-portal/srv/tls"
 )
 
 func main() {
